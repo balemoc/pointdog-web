@@ -84,6 +84,7 @@
   },
   "dependencies": {
     "hapi": "^15.0.3",
+    "hapi-boom-decorators": "^2.0.2",
     "inert": "^4.0.2",
     "lodash": "^4.15.0"
   }
