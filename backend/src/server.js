@@ -50,9 +50,16 @@ server.route({
   method: 'GET',
   path: '/{param*}',
   handler: {
+    file: Path.join(__dirname, 'client/index.html'),
+  },
+});
+
+server.route({
+  method: 'GET',
+  path: '/public/{param*}',
+  handler: {
     directory: {
-      path: Path.join(__dirname, 'client'),
-      listing: true,
+      path: Path.join(__dirname, 'client/public'),
     },
   },
 });
