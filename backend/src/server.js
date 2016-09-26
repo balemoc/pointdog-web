@@ -16,7 +16,7 @@ const server = new Hapi.Server();
 // set default server
 server.connection({
   host: '127.0.0.1',
-  port: 2000,
+  port: 2500,
   routes: {
     cors: true,
   },
@@ -25,20 +25,20 @@ server.connection({
 // directory handler plugin
 server.register(Inert, (error) => {
   if (error) {
-    server.log(['plugin'], error);
+    console.log(error);
   }
 });
 
 // hapi decorator
 server.register(ResponseDecorator, (error) => {
   if (error) {
-    server.log(['plugin'], error);
+    console.log(error);
   }
 });
 
 // log incoming request's payload
 server.on('tail', (request) => {
-  server.log(['request'], request.payload);
+  console.log(request.payload);
 });
 
 /*
@@ -77,5 +77,5 @@ server.start((error) => {
     throw error;
   }
 
-  server.log(['info'], `Server has started at: ${server.info.uri}`);
+  console.log(`Server has started at: ${server.info.uri}`);
 });
