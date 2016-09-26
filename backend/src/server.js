@@ -4,6 +4,8 @@
 
 import Hapi from 'hapi';
 import Path from 'path';
+import Inert from 'inert';
+import ResponseDecorator from 'hapi-boom-decorators';
 
 /*
     Bootstrap
@@ -18,6 +20,20 @@ server.connection({
   routes: {
     cors: true,
   },
+});
+
+// directory handler plugin
+server.register(Inert, (error) => {
+  if (error) {
+    server.log(['plugin'], error);
+  }
+});
+
+// hapi decorator
+server.register(ResponseDecorator, (error) => {
+  if (error) {
+    server.log(['plugin'], error);
+  }
 });
 
 // log incoming request's payload
