@@ -3,6 +3,7 @@
  */
 
 import Hapi from 'hapi';
+import Path from 'path';
 
 /*
     Bootstrap
@@ -28,11 +29,26 @@ server.on('tail', (request) => {
     Registering routes
  */
 
+// serve client application & uploads
+server.route({
+  method: 'GET',
+  path: '/{param*}',
+  handler: {
+    directory: {
+      path: Path.join(__dirname, 'client'),
+      listing: true,
+    },
+  },
+});
+
+// pin
 server.route({
   path: '/api/pin',
   method: 'POST',
   handler: (request, response) => {
-    response('ok');
+    if (!request.payload.pin_code) {
+      response.badRequest('Invalid body');
+    }
   },
 });
 
