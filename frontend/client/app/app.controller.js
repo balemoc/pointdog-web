@@ -1,5 +1,5 @@
 class AppController {
-  constructor($firebaseObject) {
+  constructor($firebaseObject, $firebaseArray) {
     'ngInject';
 
     const config = {
@@ -11,6 +11,11 @@ class AppController {
     };
 
     firebase.initializeApp(config);
+    firebase.database.enableLogging(true);
+
+    var ref = firebase.database().ref();
+
+    console.log($firebaseObject(ref.child('pointdogs').child('-KSVnaRGi-blHWlbWB2x')));
   }
 }
 
