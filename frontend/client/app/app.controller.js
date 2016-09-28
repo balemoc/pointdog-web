@@ -15,7 +15,7 @@ class AppController {
 
     var ref = firebase.database().ref();
 
-    console.log($firebaseObject(ref.child('pointdogs').child('-KSVnaRGi-blHWlbWB2x')));
+    console.log($firebaseObject(ref.child('pointdogs').orderByChild('url').equalTo('http://point.dog/leeprobert')));
   }
 }
 

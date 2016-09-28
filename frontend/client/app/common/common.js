@@ -1,14 +1,14 @@
 import angular from 'angular';
-import Navbar from './navbar/navbar';
-import Hero from './hero/hero';
 import User from './user/user';
+import Header from './header/header';
+import Map from './map/map';
 
-let commonModule = angular.module('app.common', [
-  Navbar,
-  Hero,
-  User
+const commonModule = angular.module('app.common', [
+  User,
+  Header,
+  Map,
 ])
-  
+
 .name;
 
 export default commonModule;

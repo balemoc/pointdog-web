@@ -1,10 +1,8 @@
 import angular from 'angular';
-import Header from './header/header';
-import Map from './map/map';
+import Detail from './detail/detail';
 
 const componentModule = angular.module('app.components', [
-  Header,
-  Map,
+  Detail,
 ])
 
 .name;
