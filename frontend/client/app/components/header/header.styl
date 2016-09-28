@@ -1,2 +1,65 @@
-.header
-  color red
+.left-side
+  display flex
+  flex-direction row
+  justify-content flex-start
+  align-items center
+  width 50%
+  
+.right-side
+  display flex
+  flex-direction row
+  justify-content flex-end
+  align-items center
+  width 50%
+
+header
+  color #d3d3d3
+  display flex
+  flex-direction row
+  align-items center
+  min-height 80px
+  padding 10px
+
+.header-logo
+  width 60px
+  height 60px
+  background url("/assets/img/pointdog_logo.png") no-repeat center center/100%
+  
+.header-emblem
+  width 100px
+  height 50px
+  background url("/assets/img/pointdog_emblem.png") no-repeat center center/100%
+
+.header-menu
+  display flex
+  flex-direction row
+
+  .menu-items
+    font-size 14px
+    display flex
+    flex-direction row
+    justify-content space-between
+    color grey
+    list-style-type none
+    
+    .item
+      margin 2px
+
+.header-login
+  display flex
+  flex-direction row
+  margin 10px
+  
+  .login
+      /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff8d0d), to(#ff0003));
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #ff8d0d, #ff0003);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #ff8d0d, #ff0003);
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #ff8d0d, #ff0003);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(top, #ff8d0d, #ff0003);
+    padding 5px
+    margin-left 20px
