@@ -1,12 +1,14 @@
 import angular from 'angular';
 import Home from './home/home';
 import About from './about/about';
+import Header from './header/header';
 
-let componentModule = angular.module('app.components', [
+const componentModule = angular.module('app.components', [
   Home,
-  About
+  About,
+  Header,
 ])
-  
+
 .name;
 
 export default componentModule;
