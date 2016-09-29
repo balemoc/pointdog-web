@@ -8,9 +8,10 @@ const detailModule = angular.module('detail', [
 
 .config(($stateProvider) => {
   'ngInject';
+
   $stateProvider
     .state('detail', {
-      url: '/{username}/{name}',
+      url: '/{username}/{pointdogName}',
       component: 'detail',
     });
 })
