@@ -1,5 +1,5 @@
 class AppController {
-  constructor($firebaseObject, $firebaseArray) {
+  constructor() {
     'ngInject';
 
     const config = {
