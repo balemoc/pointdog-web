@@ -1,15 +1,90 @@
-<div class="detail-image">
+<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 map">
+  <img class="img-responsive" ng-src="{{ $ctrl.pointdog.mapImage }}" alt="">
+</div>
+<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 contact">
+    <!-- -->
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <img class="img-responsive avatar" src="/assets/img/avatar_default@2x.png" alt="">
+    </div>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 detail">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 username">{{ $ctrl.user.emergencyContactName }}</div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 url">http://point.dog/<span class="username">{{ $ctrl.user.username }}</span></div>
+    </div>
+    <!-- -->
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    </div>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 icons">
+      <img class="img-responsive" src="/assets/img/icon_message_white.png">
+      <img class="img-responsive" src="/assets/img/icon_call_white.png">
+      <img class="img-responsive" src="/assets/img/icon_facetime_white.png">
+      <img class="img-responsive" src="/assets/img/icon_email_white.png">
+    </div>
+    <!-- -->
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    </div>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 description">
+      {{ $ctrl.pointdog.userDescription }}
+    </div>
+    <!-- -->
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    </div>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 services-text">
+      Open this Pointdog in one of the following services: 
+    </div>
+    <!-- -->
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    </div>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 map-connections">
+        <a href="http://maps.google.com/maps?q={{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">
+          <img class="img-responsive" src="/assets/img/google_maps.png">
+        </a>
+        <a href="http://maps.apple.com/?q={{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">
+          <img class="img-responsive" src="/assets/img/apple_maps.png">
+        </a>
+        <a href="tomtomhome://geo:action=navigateto&lat={{ $ctrl.pointdog.location.lat}}&long={{ $ctrl.pointdog.location.lng }}&t=m" title="">
+          <img class="img-responsive" src="/assets/img/tomtom.png">
+        </a>
+        <a href="waze://?ll={{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">
+          <img class="img-responsive" src="/assets/img/waze.png">
+        </a>
+        <a href="https://www.instantstreetview.com/@{{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">
+          <img class="img-responsive" src="/assets/img/street_view.png">
+        </a>
+    </div>
+</div>
+<!--<div class="detail-image">
   <img ng-src="{{ $ctrl.pointdog.mapImage }}" alt="">
 </div>
 <div class="detail-information">
   <div class="user">
     <div class="avatar">
-      <img src="/assets/img/pointdog_profile_empty.png">
+      <img src="/assets/img/avatar_default@2x.png">
     </div>
     <div class="profile">
       <div class="username">{{ $ctrl.user.emergencyContactName }}</div>
-      <div class="url">{{ $ctrl.user.url }}</div>
-      <div class="icons"></div>
+      <div class="url">http://point.dog/<span class="username">{{ $ctrl.user.username }}</span></div>
+      <div class="icons">
+        <img src="/assets/img/icon_message_white.png">
+        <img src="/assets/img/icon_call_white.png">
+        <img src="/assets/img/icon_facetime_white.png">
+        <img src="/assets/img/icon_email_white.png">
+      </div>
+      <div class="description">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+      <div class="mapconnections">
+        <a href="http://maps.google.com/maps?q={{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">Google maps</a>
+        <a href="http://maps.apple.com/?q={{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">Apple maps</a>
+        <a href="tomtomhome://geo:action=navigateto&lat={{ $ctrl.pointdog.location.lat}}&long={{ $ctrl.pointdog.location.lng }}&t=m" title="">Tomtom</a>
+        <a href="waze://?ll={{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">Waze</a>
+        <a href="https://www.instantstreetview.com/@{{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">Street view</a>
+      </div>
     </div>
   </div>
 </div>
+-->
