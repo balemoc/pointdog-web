@@ -6,6 +6,8 @@ import Hapi from 'hapi';
 import Path from 'path';
 import Inert from 'inert';
 import ResponseDecorator from 'hapi-boom-decorators';
+import joi from 'joi';
+import CryptoJS from 'crypto-js';
 
 /*
     Bootstrap
@@ -66,12 +68,31 @@ server.route({
 
 // pin
 server.route({
-  path: '/api/pin',
+  path: '/api/auth/pin',
   method: 'POST',
-  handler: (request, response) => {
-    if (!request.payload.pin_code) {
-      response.badRequest('Invalid body');
+  handler: (request, reply) => {
+    const {
+      pinCode,
+      hash,
+    } = request.payload;
+
+    const secret = '98CAA88B922AA7096323881A8340DE7B';
+
+    const plainText = CryptoJS.AES.decrypt(hash.toString(), secret).toString(CryptoJS.enc.Utf8);
+
+    if (pinCode !== plainText) {
+      return reply.unauthorized();
     }
+
+    return reply();
+  },
+  config: {
+    validate: {
+      payload: joi.object().keys({
+        pinCode: joi.string().required(),
+        hash: joi.string().required(),
+      }),
+    },
   },
 });
 

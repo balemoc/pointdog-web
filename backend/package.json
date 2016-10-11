@@ -83,9 +83,11 @@
     ]
   },
   "dependencies": {
+    "crypto-js": "^3.1.7",
     "hapi": "^15.0.3",
     "hapi-boom-decorators": "^2.0.2",
     "inert": "^4.0.2",
+    "joi": "^9.1.0",
     "lodash": "^4.15.0"
   }
 }

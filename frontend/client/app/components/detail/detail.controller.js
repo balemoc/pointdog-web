@@ -13,13 +13,15 @@ class DetailController {
     let pointdog = null;
     /* check if user is looking for default */
     if ($stateParams.pointdogName !== '') {
-      pointdog = dbRef.child('pointdogs')
-                        .orderByChild('url')
-                        .equalTo(`http://point.dog/${username}/${pointdogName}`);
+      pointdog = dbRef
+        .child('pointdogs')
+        .orderByChild('url')
+        .equalTo(`http://point.dog/${username}/${pointdogName}`);
     } else {
-      pointdog = dbRef.child('pointdogs')
-                        .orderByChild('name')
-                        .equalTo('default');
+      pointdog = dbRef
+        .child('pointdogs')
+        .orderByChild('name')
+        .equalTo('default');
     }
 
     /* bind pointdog to scope */
@@ -32,16 +34,20 @@ class DetailController {
         .then((user) => {
           this.user = user;
 
-          storageRef.child(this.pointdog.imageThumbRefPath).getDownloadURL()
+          storageRef
+            .child(this.pointdog.imageThumbRefPath)
+            .getDownloadURL()
             .then((url) => {
               $scope.$apply(() => {
                 this.user.profileImage = url;
               });
-          });
+            });
         });
 
       // get image and bind
-      storageRef.child(obj[0].mapImageRefPath).getDownloadURL()
+      storageRef
+        .child(obj[0].mapImageRefPath)
+        .getDownloadURL()
         .then((url) => {
           $scope.$apply(() => {
             this.pointdog.mapImage = url;
