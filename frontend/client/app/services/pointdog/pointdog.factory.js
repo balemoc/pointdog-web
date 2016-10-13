@@ -1,0 +1,48 @@
+const PointdogFactory = ($firebaseObject) => {
+  'ngInject';
+
+  // services container
+  const services = {};
+
+  // store firebase refs
+  const storageRef = firebase.storage().ref();
+  const dbRef = firebase.database().ref();
+
+  services.getByUId = (userId, pointdogName) => {
+    // param check
+    if (!userId || !pointdogName) throw new Error('Missing param(s)');
+
+    // path to obj
+    const pointdog = dbRef
+                      .child('user-pointdogs-name')
+                      .child(userId)
+                      .child(pointdogName);
+    // firebaseobj
+    const pointdogObj = $firebaseObject(pointdog);
+
+    // return promise
+    return pointdogObj
+      .$loaded();
+  };
+
+  // Get all pointdogs based on userid
+  services.getAllByUId = (userId) => {
+    // param check
+    if (!userId) throw new Error('Missing UserId');
+
+    // path to obj
+    const pointdogs = dbRef
+                        .child('user-pointdogs-name')
+                        .child(userId);
+
+    const pointdogsObj = $firebaseObject(pointdogs);
+
+    // return promise
+    return pointdogsObj
+      .$loaded();
+  };
+
+  return services;
+};
+
+export default PointdogFactory;

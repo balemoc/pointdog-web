@@ -4,6 +4,7 @@ import angularFire from 'angularfire';
 import 'normalize.css';
 import Common from './common/common';
 import Components from './components/components';
+import Services from './services/services';
 import AppComponent from './app.component';
 
 angular.module('app', [
@@ -11,6 +12,7 @@ angular.module('app', [
   angularFire,
   Common,
   Components,
+  Services,
 ])
 
 .config(($locationProvider, $urlRouterProvider) => {

@@ -26,13 +26,16 @@ class DetailController {
 
     /* bind pointdog to scope */
     $firebaseArray(pointdog).$loaded((obj) => {
-      this.pointdog = obj[0];
-
       // set user
       $firebaseObject(dbRef.child('profiles').child(obj[0].uid))
         .$loaded()
         .then((user) => {
-          this.user = user;
+          if (user.isPrivate) {
+            this.pointdog = null;
+          } else {
+            this.pointdog = obj[0];
+            this.user = user;
+          }
 
           storageRef
             .child(this.pointdog.imageThumbRefPath)
