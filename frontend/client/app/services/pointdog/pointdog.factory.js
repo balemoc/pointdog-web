@@ -25,10 +25,21 @@ const PointdogFactory = ($firebaseObject) => {
       .$loaded();
   };
 
+  // get map imageURL
+  services.getMapImage = (path) => {
+    // param check
+    if (!path) throw new Error('Missing path');
+
+    // get storage ref url based on path
+    const image = storageRef.child(path).getDownloadURL();
+
+    return image;
+  };
+
   // Get all pointdogs based on userid
   services.getAllByUId = (userId) => {
     // param check
-    if (!userId) throw new Error('Missing UserId');
+    if (!userId) throw new Error('Missing userId');
 
     // path to obj
     const pointdogs = dbRef

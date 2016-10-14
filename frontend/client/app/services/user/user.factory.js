@@ -21,6 +21,7 @@ const UserFactory = ($firebaseObject) => {
       user
         .once('value')
         .then((snapshot) => {
+          // reject if does not exists
           if (!snapshot.exists()) reject();
           resolve(true);
         });

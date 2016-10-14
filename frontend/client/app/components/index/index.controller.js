@@ -1,5 +1,5 @@
 class IndexController {
-  constructor($scope) {
+  constructor() {
     'ngInject';
 
     this.name = 'index';

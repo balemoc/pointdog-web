@@ -1,17 +1,51 @@
 class DetailController {
-  constructor($scope, $firebaseObject, $firebaseArray, $state, $stateParams) {
+  constructor($scope, $firebaseObject, $firebaseArray,
+  $state, $stateParams, UserService, PointdogService) {
     'ngInject';
 
+    /*
     const username = $stateParams.username;
     const pointdogName = $stateParams.pointdogName;
+    */
 
-    /* img storage ref */
+    const username = $stateParams.username;
+    // get pointdogname from /{username}/{pointdogname} path
+    // and if it was not specificed, set 'default'
+    const pointdogName = $stateParams.pointdogName === '' ? 'default' : $stateParams.pointdogName;
+
+    // data pipeline
+    UserService
+      // get user
+      .getByName(username)
+      // bind user & get pointdog
+      .then((user) => {
+        this.user = user;
+        return PointdogService.getByUId(user.uid, pointdogName);
+      })
+      // bind pointdog & get map image
+      .then((pointdog) => {
+        this.pointdog = pointdog;
+        return PointdogService.getMapImage(pointdog.mapImageRefPath);
+      })
+      // bind map image
+      .then((url) => {
+        this.mapImageUrl = url;
+      })
+      // debug
+      .then(() => {
+        console.log(this.user);
+        console.log(this.pointdog);
+      })
+      // if user/pointdog is absent or db error occured
+      .catch((error) => {
+        console.log(error);
+        $state.go('index');
+      });
+
+    /*
     const storageRef = firebase.storage().ref();
-    /* db ref */
     const dbRef = firebase.database().ref();
-    /* get pointdog */
     let pointdog = null;
-    /* check if user is looking for default */
     if ($stateParams.pointdogName !== '') {
       pointdog = dbRef
         .child('pointdogs')
@@ -24,7 +58,6 @@ class DetailController {
         .equalTo('default');
     }
 
-    /* bind pointdog to scope */
     $firebaseArray(pointdog).$loaded((obj) => {
       // set user
       $firebaseObject(dbRef.child('profiles').child(obj[0].uid))
@@ -57,6 +90,7 @@ class DetailController {
           });
         });
     });
+    */
   }
 }
 
