@@ -3,11 +3,6 @@ class DetailController {
   $state, $stateParams, UserService, PointdogService) {
     'ngInject';
 
-    /*
-    const username = $stateParams.username;
-    const pointdogName = $stateParams.pointdogName;
-    */
-
     const username = $stateParams.username;
     // get pointdogname from /{username}/{pointdogname} path
     // and if it was not specificed, set 'default'
@@ -46,56 +41,6 @@ class DetailController {
         console.log(error);
         $state.go('index');
       });
-
-    /*
-    const storageRef = firebase.storage().ref();
-    const dbRef = firebase.database().ref();
-    let pointdog = null;
-    if ($stateParams.pointdogName !== '') {
-      pointdog = dbRef
-        .child('pointdogs')
-        .orderByChild('url')
-        .equalTo(`http://point.dog/${username}/${pointdogName}`);
-    } else {
-      pointdog = dbRef
-        .child('pointdogs')
-        .orderByChild('name')
-        .equalTo('default');
-    }
-
-    $firebaseArray(pointdog).$loaded((obj) => {
-      // set user
-      $firebaseObject(dbRef.child('profiles').child(obj[0].uid))
-        .$loaded()
-        .then((user) => {
-          if (user.isPrivate) {
-            this.pointdog = null;
-          } else {
-            this.pointdog = obj[0];
-            this.user = user;
-          }
-
-          storageRef
-            .child(this.pointdog.imageThumbRefPath)
-            .getDownloadURL()
-            .then((url) => {
-              $scope.$apply(() => {
-                this.user.profileImage = url;
-              });
-            });
-        });
-
-      // get image and bind
-      storageRef
-        .child(obj[0].mapImageRefPath)
-        .getDownloadURL()
-        .then((url) => {
-          $scope.$apply(() => {
-            this.pointdog.mapImage = url;
-          });
-        });
-    });
-    */
   }
 }
 
