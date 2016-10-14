@@ -29,10 +29,15 @@ class DetailController {
       })
       // bind map image
       .then((url) => {
-        this.mapImageUrl = url;
+        // due to limit of angular / es5.
+        // we need to reapply update bindings
+        $scope.$apply(() => {
+          this.mapImageUrl = url;
+        });
       })
       // debug
       .then(() => {
+        console.log(this.mapImageUrl);
         console.log(this.user);
         console.log(this.pointdog);
       })
