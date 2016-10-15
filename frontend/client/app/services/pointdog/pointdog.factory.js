@@ -4,7 +4,7 @@ const PointdogFactory = ($firebaseObject) => {
   // services container
   const services = {};
 
-  // store firebase refs
+  // firebase refs
   const storageRef = firebase.storage().ref();
   const dbRef = firebase.database().ref();
 
@@ -26,7 +26,7 @@ const PointdogFactory = ($firebaseObject) => {
   };
 
   // get map imageURL
-  services.getMapImage = (path) => {
+  services.getMapImageUrl = (path) => {
     // param check
     if (!path) throw new Error('Missing path');
 

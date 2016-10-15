@@ -4,7 +4,7 @@ const UserFactory = ($firebaseObject) => {
   // services container
   const services = {};
 
-  // store firebase refs
+  // firebase refs
   const storageRef = firebase.storage().ref();
   const dbRef = firebase.database().ref();
 
@@ -32,6 +32,10 @@ const UserFactory = ($firebaseObject) => {
     // check if user exists
     return checkIfExists
       .then(() => userObj.$loaded());
+  };
+
+  services.getAvatarUrl = (username) => {
+    throw new Error('not implemented yet');
   };
 
   return services;

@@ -20,7 +20,7 @@ class DetailController {
       // bind pointdog & get map image
       .then((pointdog) => {
         this.pointdog = pointdog;
-        return PointdogService.getMapImage(pointdog.mapImageRefPath);
+        return PointdogService.getMapImageUrl(pointdog.mapImageRefPath);
       })
       // bind map image
       .then((url) => {
