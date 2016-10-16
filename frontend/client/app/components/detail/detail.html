@@ -1,56 +1,59 @@
-<!-- MAP -->
-<div class="map col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-  <img class="img-responsive" ng-src="{{ $ctrl.mapImageUrl }}" alt="">
+<div ng-if="$ctrl.isAuthenticated">
+  <!-- MAP -->
+  <div class="map col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+    <img class="img-responsive" ng-src="{{ $ctrl.mapImageUrl }}" alt="">
+  </div>
+  <!-- CONTACT -->
+  <div class="contact col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+    <!-- AVATAR -->
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3">
+      <img class="avatar img-responsive" src="/assets/img/avatar_default.png" alt="">
+    </div>
+    <!-- INFO -->
+    <div class="detail col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <div class="username col-xs-12 col-sm-12 col-md-12 col-lg-12">{{ $ctrl.user.emergencyContactName }}</div>
+      <div class="url col-xs-12 col-sm-12 col-md-12 col-lg-12">http://point.dog/<span class="username">{{ $ctrl.user.username }}</span></div>
+    </div>
+    <!-- CONTACT BUTTONS
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 icons">
+      <img class="img-responsive" src="/assets/img/icon_message_white.png">
+      <img class="img-responsive" src="/assets/img/icon_call_white.png">
+      <img class="img-responsive" src="/assets/img/icon_facetime_white.png">
+      <img class="img-responsive" src="/assets/img/icon_email_white.png">
+    </div>
+    -->
+    <!-- CLEARFIX -->
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3"></div>
+    <!-- DESCRIPTION -->
+    <div class="description col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      {{ $ctrl.pointdog.userDescription }}
+    </div>
+    <!-- CLEARFIX -->
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3"></div>
+    <!-- SERVICES-TEXT -->
+    <div class="services-text col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      Open this Pointdog in one of the following services: 
+    </div>
+    <!-- CLEARFIX -->
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3"></div>
+    <!-- MAP CONNECTIONS -->
+    <div class="map-connections  col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <a href="http://maps.google.com/maps?q={{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">
+        <img class="img-responsive" src="/assets/img/google_maps.png">
+      </a>
+      <a href="http://maps.apple.com/?q={{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">
+        <img class="img-responsive" src="/assets/img/apple_maps.png">
+      </a>
+      <a href="tomtomhome://geo:action=navigateto&lat={{ $ctrl.pointdog.location.lat}}&long={{ $ctrl.pointdog.location.lng }}&t=m" title="">
+        <img class="img-responsive" src="/assets/img/tomtom.png">
+      </a>
+      <a href="waze://?ll={{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">
+        <img class="img-responsive" src="/assets/img/waze.png">
+      </a>
+      <a href="https://www.instantstreetview.com/@{{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">
+        <img class="img-responsive" src="/assets/img/street_view.png">
+      </a>
+    </div>
+  </div>
 </div>
-<!-- CONTACT -->
-<div class="contact col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-  <!-- AVATAR -->
-  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3">
-    <img class="avatar img-responsive" src="/assets/img/avatar_default.png" alt="">
-  </div>
-  <!-- INFO -->
-  <div class="detail col-xs-8 col-sm-8 col-md-8 col-lg-8">
-    <div class="username col-xs-12 col-sm-12 col-md-12 col-lg-12">{{ $ctrl.user.emergencyContactName }}</div>
-    <div class="url col-xs-12 col-sm-12 col-md-12 col-lg-12">http://point.dog/<span class="username">{{ $ctrl.user.username }}</span></div>
-  </div>
-  <!-- CONTACT BUTTONS
-  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 icons">
-    <img class="img-responsive" src="/assets/img/icon_message_white.png">
-    <img class="img-responsive" src="/assets/img/icon_call_white.png">
-    <img class="img-responsive" src="/assets/img/icon_facetime_white.png">
-    <img class="img-responsive" src="/assets/img/icon_email_white.png">
-  </div>
-  -->
-  <!-- CLEARFIX -->
-  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3"></div>
-  <!-- DESCRIPTION -->
-  <div class="description col-xs-8 col-sm-8 col-md-8 col-lg-8">
-    {{ $ctrl.pointdog.userDescription }}
-  </div>
-  <!-- CLEARFIX -->
-  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3"></div>
-  <!-- SERVICES-TEXT -->
-  <div class="services-text col-xs-8 col-sm-8 col-md-8 col-lg-8">
-    Open this Pointdog in one of the following services: 
-  </div>
-  <!-- CLEARFIX -->
-  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3"></div>
-  <!-- MAP CONNECTIONS -->
-  <div class="map-connections  col-xs-8 col-sm-8 col-md-8 col-lg-8">
-    <a href="http://maps.google.com/maps?q={{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">
-      <img class="img-responsive" src="/assets/img/google_maps.png">
-    </a>
-    <a href="http://maps.apple.com/?q={{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">
-      <img class="img-responsive" src="/assets/img/apple_maps.png">
-    </a>
-    <a href="tomtomhome://geo:action=navigateto&lat={{ $ctrl.pointdog.location.lat}}&long={{ $ctrl.pointdog.location.lng }}&t=m" title="">
-      <img class="img-responsive" src="/assets/img/tomtom.png">
-    </a>
-    <a href="waze://?ll={{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">
-      <img class="img-responsive" src="/assets/img/waze.png">
-    </a>
-    <a href="https://www.instantstreetview.com/@{{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">
-      <img class="img-responsive" src="/assets/img/street_view.png">
-    </a>
-  </div>
-</div>
+<div ng-if="!$ctrl.isAuthenticated" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"><!--unauth--></div>
