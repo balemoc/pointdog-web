@@ -17,6 +17,7 @@ angular.module('app', [
 
 .config(($locationProvider, $urlRouterProvider) => {
   'ngInject';
+
   // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
   // #how-to-configure-your-server-to-work-with-html5mode
   $locationProvider.html5Mode(true).hashPrefix('!');
@@ -24,6 +25,27 @@ angular.module('app', [
   $urlRouterProvider.when('', '/');
   // set 404 router to default
   $urlRouterProvider.otherwise('/');
+})
+
+.run(($transitions) => {
+  'ngInject';
+
+  // matchCriteria // async 'callback'
+  $transitions.onBefore({}, (transition) => {
+    // get state informations to changes and be sure,
+    // user can get auth component from detail
+    const from = transition.$from().toString();
+    const to = transition.$to().toString();
+
+    // TODO: should be separated as matchCriteria
+    if (to === 'auth') {
+      // check if user was redirected from detail
+      if (from !== 'detail') {
+        return false;
+      }
+    }
+    return true;
+  });
 })
 
 .component('app', AppComponent);
