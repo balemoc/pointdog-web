@@ -1,6 +1,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import angularFire from 'angularfire';
+import ngMeta from 'ng-meta';
 import 'normalize.css';
 import Common from './common/common';
 import Components from './components/components';
@@ -9,6 +10,7 @@ import AppComponent from './app.component';
 
 angular.module('app', [
   uiRouter,
+  'ngMeta',
   angularFire,
   Common,
   Components,
@@ -27,8 +29,10 @@ angular.module('app', [
   $urlRouterProvider.otherwise('/');
 })
 
-.run(($transitions) => {
+.run(($transitions, ngMeta) => {
   'ngInject';
+
+  ngMeta.init();
 
   // matchCriteria // async 'callback'
   $transitions.onBefore({}, (transition) => {
