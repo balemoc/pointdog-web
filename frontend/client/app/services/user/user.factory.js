@@ -8,6 +8,9 @@ const UserFactory = ($firebaseObject) => {
   const storageRef = firebase.storage().ref();
   const dbRef = firebase.database().ref();
 
+  // store user obj
+  services.user = null;
+
   // Get user object by username
   services.getByName = (username) => {
     // param checking
@@ -31,7 +34,11 @@ const UserFactory = ($firebaseObject) => {
 
     // check if user exists
     return checkIfExists
-      .then(() => userObj.$loaded());
+      .then(() => userObj.$loaded())
+      .then((user) => {
+        services.user = user;
+        return user;
+      });
   };
 
   services.getAvatarUrl = (username) => {
