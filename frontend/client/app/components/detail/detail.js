@@ -6,13 +6,23 @@ const detailModule = angular.module('detail', [
   uiRouter,
 ])
 
-.config(($stateProvider) => {
+.config(($stateProvider, $urlMatcherFactoryProvider) => {
   'ngInject';
+
+  // make ending trailing slash irrelevant on routing
+  $urlMatcherFactoryProvider.strictMode(false);
 
   $stateProvider
     .state('detail', {
       url: '/{username}/{pointdogName}',
       component: 'detail',
+      params: {
+        // setup default pointdogname if null
+        pointdogName: {
+          value: 'default',
+          squash: true,
+        },
+      },
     });
 })
 
