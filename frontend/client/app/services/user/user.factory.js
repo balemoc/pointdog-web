@@ -20,25 +20,10 @@ const UserFactory = ($firebaseObject) => {
                   .child('user-profiles')
                   .child(username);
 
-    const checkIfExists = new Promise((resolve, reject) => {
-      user
-        .once('value')
-        .then((snapshot) => {
-          // reject if does not exists
-          if (!snapshot.exists()) reject();
-          resolve(true);
-        });
-    });
-
     const userObj = $firebaseObject(user);
 
-    // check if user exists
-    return checkIfExists
-      .then(() => userObj.$loaded())
-      .then((user) => {
-        services.user = user;
-        return user;
-      });
+    return userObj
+      .$loaded();
   };
 
   services.getAvatarUrl = (username) => {

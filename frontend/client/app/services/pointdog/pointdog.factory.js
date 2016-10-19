@@ -26,7 +26,7 @@ const PointdogFactory = ($firebaseObject) => {
   };
 
   // get map imageURL
-  services.getMapImageUrl = (path) => {
+  services.getImageUrl = (path) => {
     // param check
     if (!path) throw new Error('Missing path');
 
