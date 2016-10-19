@@ -9,59 +9,55 @@ class DetailController {
 
     this.isAuthenticated = AuthService.authenticated;
     const dataToAuthenticate = AuthService.dataToAuthenticate;
-    console.log(this.isAuthenticated);
-    /*
-    const user = UserService.getByName(username);
 
-    const isAuthenticated = AuthService.isAuthenticated;
-    const dataToAuthenticate = AuthService.dataToAuthenticate;
-    */
-
-    /*
-    user
-      .then((user) => {
-        if (user.isPrivate) {
-          if (!isAuthenticated) {
-            // pass username
-            dataToAuthenticate.username = username;
-            dataToAuthenticate.pointdogName = pointdogName;
-            dataToAuthenticate.hash = user.PIN;
-            return $state.go('auth');
-          }
-        }
-        // redirect to flow when already authenticated or doesn't need to be
-        return user;
-      })
-      .then((user) => PointdogService.getByUId(user.uid, pointdogName))
-      .then((pointdog) => {
-        console.log(pointdog)
-        console.log(this.user)
-      })
-      .catch((error) => console.log(error));
-      */
-
+    this.images = [];
 
     // data pipeline
     UserService
-      // get user
+      // return user promsie
       .getByName(username)
       // bind user & get pointdog
       .then((user) => {
         this.user = user;
+
+        console.log(user);
+        // return pointdog promise
         return PointdogService.getByUId(user.uid, pointdogName);
       })
-      // bind pointdog & get map image
+      // bind pointdog & get images
       .then((pointdog) => {
         this.pointdog = pointdog;
-        return PointdogService.getMapImageUrl(pointdog.mapImageRefPath);
+        console.log(pointdog)
+
+        // image paths for pointdog
+        const {
+          mapImageRefPath,
+          imageRefPath,
+        } = pointdog;
+
+        // array with promises
+        const imagesToDownload = [];
+
+        // we check for image
+        if (imageRefPath !== '') {
+          imagesToDownload.push(PointdogService.getImageUrl(imageRefPath));
+        }
+
+        // we check for mapimage
+        if (mapImageRefPath !== '') {
+          imagesToDownload.push(PointdogService.getImageUrl(mapImageRefPath));
+        }
+
+        // resolve when all images downloaded
+        // return urls in array
+        return Promise.all(imagesToDownload);
       })
-      // bind map image
-      .then((url) => {
-        // due to limit of angular / es5.
-        // we need to reapply update bindings
-        $scope.$apply(() => {
-          this.mapImageUrl = url;
-        });
+      // bind images
+      .then((imageUrls) => {
+        // we bind all urls to scope (carousel)
+        for (let i = 0; i < imageUrls.length; i += 1) {
+          this.images.push(imageUrls[i]);
+        }
       })
       // authenticate
       .then(() => {
@@ -76,20 +72,13 @@ class DetailController {
         }
         // there is no need for authentication
         // set it true - messy way
-        $scope.$apply(() => {
-          this.isAuthenticated = true;
-        });
-      })
-      // debug
-      .then(() => {
-        console.log(this.mapImageUrl);
-        console.log(this.user);
-        console.log(this.pointdog);
+        this.isAuthenticated = true;
       })
       // if user/pointdog is absent or db error occured
       .catch((error) => {
+        // todo check what kind of error
         console.log(error);
-        $state.go('index');
+        //$state.go('index');
       });
   }
 }

@@ -1,13 +1,35 @@
 <div ng-if="$ctrl.isAuthenticated">
-  <!-- MAP -->
-  <div class="map col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-    <img class="img-responsive" ng-src="{{ $ctrl.mapImageUrl }}" alt="">
+  <!-- IMAGES -->
+  <div class="carousel col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+    <div id="image" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#image" data-slide-to="0" class="active"></li>
+        <li data-target="#image" data-slide-to="1"></li>
+      </ol>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item" ng-class="{active:!$index}" ng-repeat="image in $ctrl.images">
+          <img class="img-responsive" ng-src="{{ image }}" alt="...">
+          <div class="carousel-caption">
+            <h3>{{ $ctrl.pointdog.userDescription }}</h3>
+          </div>
+        </div>
+      </div>
+      <!-- Controls -->
+      <a class="left carousel-control" href="#image" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#image" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div>
   </div>
   <!-- CONTACT -->
   <div class="contact col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
     <!-- AVATAR -->
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3">
-      <img class="avatar img-responsive col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-lg-10" src="/assets/img/avatar_default.png" alt="">
+    <div class="text-center col-xs-4 col-sm-4 col-md-4 col-lg-3">
+      <img class="avatar col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-lg-10" src="/assets/img/avatar_default.png" alt="">
     </div>
     <!-- INFO -->
     <div class="detail col-xs-8 col-sm-8 col-md-8 col-lg-8">
