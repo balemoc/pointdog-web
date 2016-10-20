@@ -4,8 +4,7 @@
     <div id="image" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
-        <li data-target="#image" data-slide-to="0" class="active"></li>
-        <li data-target="#image" data-slide-to="1"></li>
+        <li data-target="#image" ng-repeat="image in $ctrl.images" data-slide-to="$index" class="{active:!$index}"></li>
       </ol>
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
@@ -29,7 +28,8 @@
   <div class="contact col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
     <!-- AVATAR -->
     <div class="text-center col-xs-4 col-sm-4 col-md-4 col-lg-3">
-      <img class="avatar col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-lg-10" src="/assets/img/avatar_default.png" alt="">
+      <img ng-if="$ctrl.avatarUrl" ng-src="{{ $ctrl.avatarUrl }}" class="avatar img-circle" src="/assets/img/avatar_default.png" alt="">
+      <img ng-if="!$ctrl.avatarUrl" class="avatar img-circle" src="/assets/img/avatar_default.png" ng-src="/assets/img/avatar_default.png" alt="">
     </div>
     <!-- INFO -->
     <div class="detail col-xs-8 col-sm-8 col-md-8 col-lg-8">
