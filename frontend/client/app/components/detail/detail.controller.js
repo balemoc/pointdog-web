@@ -25,7 +25,7 @@ class DetailController {
     UserService
       // return user promsie
       .getByName(username)
-      // bind user & get pointdog
+      // bind user & get avatar
       .then((user) => {
         // validate user
         if (!user.uid) {
@@ -35,10 +35,12 @@ class DetailController {
           });
         }
         this.user = user;
-
-        console.log(user);
-        // return pointdog promise
-        return PointdogService.getByUId(user.uid, pointdogName);
+        return UserService.getAvatarUrl(user.avatarImageRef);
+      })
+      .then((avatarUrl) => {
+        this.avatarUrl = avatarUrl;
+        // return pointdog
+        return PointdogService.getByUId(this.user.uid, pointdogName);
       })
       // set map urls
       .then((pointdog) => {
@@ -96,12 +98,15 @@ class DetailController {
           imagesToDownload.push(PointdogService.getImageUrl(mapImageRefPath));
         }
 
+        console.log(imagesToDownload)
+
         // resolve when all images downloaded
         // return urls in array
         return Promise.all(imagesToDownload);
       })
       // bind images
       .then((imageUrls) => {
+        console.log(imageUrls)
         // we bind all urls to scope (carousel)
         for (let i = 0; i < imageUrls.length; i += 1) {
           this.images.push(imageUrls[i]);

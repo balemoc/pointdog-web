@@ -26,8 +26,14 @@ const UserFactory = ($firebaseObject) => {
       .$loaded();
   };
 
-  services.getAvatarUrl = (username) => {
-    throw new Error('not implemented yet');
+  services.getAvatarUrl = (path) => {
+    // param check
+    if (!path) throw new Error('Missing path');
+
+    // get storage ref url based on path
+    const image = storageRef.child(path).getDownloadURL();
+
+    return image;
   };
 
   return services;
