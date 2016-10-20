@@ -17,8 +17,10 @@ angular.module('app', [
   Services,
 ])
 
-.config(($locationProvider, $urlRouterProvider) => {
+.config(($locationProvider, $urlRouterProvider, $compileProvider) => {
   'ngInject';
+
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|comgooglemaps|waze|chrome-extension):/);
 
   // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
   // #how-to-configure-your-server-to-work-with-html5mode
