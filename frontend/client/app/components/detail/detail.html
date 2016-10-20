@@ -60,19 +60,21 @@
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3"></div>
     <!-- MAP CONNECTIONS -->
     <div class="map-connections  col-xs-8 col-sm-8 col-md-8 col-lg-8">
-      <a href="http://maps.google.com/maps?q={{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">
+      <a href="{{ $ctrl.mapUrls.google }}" title="">
         <img class="img-responsive" src="/assets/img/google_maps.png">
       </a>
-      <a href="http://maps.apple.com/?q={{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">
+      <a href="{{ $ctrl.mapUrls.apple }}" title="">
         <img class="img-responsive" src="/assets/img/apple_maps.png">
       </a>
-      <a href="tomtomhome://geo:action=navigateto&lat={{ $ctrl.pointdog.location.lat}}&long={{ $ctrl.pointdog.location.lng }}&t=m" title="">
+      <!--
+      <a href="tomtomgo://geo:action=navigateto&lat={{ $ctrl.pointdog.location.lat}}&long={{ $ctrl.pointdog.location.lng }}&t=m" title="">
         <img class="img-responsive" src="/assets/img/tomtom.png">
       </a>
-      <a href="waze://?ll={{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">
+      -->
+      <a href="{{ $ctrl.mapUrls.waze }}" title="">
         <img class="img-responsive" src="/assets/img/waze.png">
       </a>
-      <a href="https://www.instantstreetview.com/@{{ $ctrl.pointdog.location.lat}},{{ $ctrl.pointdog.location.lng }}&t=m" title="">
+      <a href="{{ $ctrl.mapUrls.streetview }}" title="">
         <img class="img-responsive" src="/assets/img/street_view.png">
       </a>
     </div>
