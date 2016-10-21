@@ -1,52 +1,61 @@
 detail
+
+  /* Gallery block */
   .carousel
     padding 0
 
-  .contact
-    background-color #3c3c3c
+  /* Info block */
+  .info
     min-height 200px
-    padding 0px 0px 50px 0px !important
+    padding 25px 0px 25px 0px
     margin-top: -1px; // due to left-floated contact div
     
-    .avatar
-      width 100%
-      min-width: 64px
-      max-width: 128px
-      margin 10px 0px 0px 0px;
+    color gray
+    background-color #3c3c3c
 
-    .detail
-      font-size 16px
-      padding 10px 0px 10px 0px
+    /* Avatar component */
+    .info-avatar
+      margin 10px 0px 0px 0px;
+      padding 10px
+      
+      /* Profile image */
+      .image
+        min-width: 64px
+        max-width: 128px // limit responsiveness
+
+    /* Contact info component */
+    .info-contact
+      padding 15px
+      
       color #777
       
-      > *
-        margin 5px 0px 0px 0px
-        padding 0px
+      font-size 16px
       
-      .username
+      /* Tex */
+      .text--white
         color #f2f1ef
-    
-    .icons
-      padding 0px
-      margin-top 10px
-
-      img
-        display inline-block
-        width 24px
-        margin-right 20px
+      
+      /* Contact name */
+      .name
+        margin 0
+        padding 0
         
-    .description
+      /* Contact url */
+      .url
+        display inline-flex
+        margin 0
+        padding 0
+        
+    .info-description
       padding 0px
       
-    .services-text
+    .info-services
       margin-top 10px
-      padding 5px 0px 0px 0px
       color gray
       
-    .map-connections
-      padding 0
+    .info-maps
 
-      img
+      .image
         display inline-block
         margin 10px 10px 0px 0px
         width 64px
