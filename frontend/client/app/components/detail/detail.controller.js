@@ -114,16 +114,45 @@ class DetailController {
       })
       .then(() => {
         console.log('carouselfix')
-        function carouselNormalization() {
+
+        /*
+        $(document).ready(() => {
+
           const items = $('.item'); //grab all slides
           const heights = []; //create empty array to store height values
           let tallest; //create variable to make note of the tallest slide
 
           console.log(items)
-          console.log(document.getElementsByClassName('item'))
+          if (items.length) {
+            function normalizeHeights() {
+              items.each(function() { //add heights to array
+                heights.push($(this).height()); 
+                console.log($(this))
+              });
+              tallest = Math.max.apply(null, heights); //cache largest value
+              items.each(function() {
+                  $(this).css('min-height',tallest + 'px');
+              });
+            };
+            normalizeHeights();
+
+            $(window).on('resize orientationchange', function () {
+                tallest = 0, heights.length = 0; //reset vars
+                items.each(function() {
+                    $(this).css('min-height','0'); //reset min-height
+                }); 
+                normalizeHeights(); //run it again 
+            });
+          }
+        });
+        function carouselNormalization() {
+          const items = $('.item'); //grab all slides
+          const heights = []; //create empty array to store height values
+          let tallest; //create variable to make note of the tallest slide
         }
 
         carouselNormalization();
+        */
       })
       // authenticate validiation
       .then(() => {

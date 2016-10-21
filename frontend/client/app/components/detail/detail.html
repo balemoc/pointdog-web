@@ -7,9 +7,11 @@
         <li data-target="#image" ng-repeat="image in $ctrl.images" data-slide-to="$index" class="{active:!$index}"></li>
       </ol>
       <!-- Wrapper for slides -->
-      <div class="carousel-inner">
+      <div class="carousel-inner" style="height:100% !important;"">
         <div class="item" ng-class="{active:!$index}" ng-repeat="image in $ctrl.images">
-          <img class="img-responsive" ng-src="{{ image }}" alt="...">
+          <div class="img-container" ng-style="{'background-image':'url('+image+')'}">
+            
+          </div>
           <div class="carousel-caption">
             <h3>{{ $ctrl.pointdog.userDescription }}</h3>
           </div>
