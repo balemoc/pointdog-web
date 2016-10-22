@@ -51,7 +51,6 @@ class DetailController {
             data: pointdog,
           });
         }
-        console.log(pointdog)
         // set default (desktop) URL-s
         const {
           lat,
@@ -61,15 +60,19 @@ class DetailController {
         const latitude = window._.round(lat, 6);
         const longitude = window._.round(lng, 6);
 
+        // def urls
         this.mapUrls.google = `http://maps.google.com/maps?q=${latitude},${longitude}`;
         this.mapUrls.apple = `http://maps.apple.com/?q=${latitude},${longitude}`;
         this.mapUrls.waze = `https://www.waze.com/livemap?zoom=14&lat=${latitude}&lon=${longitude}`;
         this.mapUrls.streetview = `https://www.instantstreetview.com/@${latitude},${longitude},18z,1t`;
+        this.mapUrls.tomtom = `tomtomhome://geo:action=navigateto&lat=${latitude}&long=${longitude}`;
+        this.mapUrls.here = `https://wego.here.com/?map=${latitude},${longitude},18,normal`;
 
-        // check urls & set based on navigator
+        // set url schemes if mobile
         if (window.navigator.userAgent.match(/iPhone|iPod/)) {
-          this.mapUrls.waze = `waze://?ll=${pointdog.location.lat},${pointdog.location.lng}&t=m`;
-          this.mapUrls.streetview = `comgooglemaps://?center=${pointdog.location.lat},${pointdog.location.lng}&mapmode=streetview`;
+          this.mapUrls.waze = `waze://?ll=${latitude},${longitude}&t=m`;
+          this.mapUrls.streetview = `comgooglemaps://?center=${latitude},${longitude}&mapmode=streetview`;
+          this.mapUrls.here = `here-place://${latitude},${longitude}`;
         }
 
         return pointdog;

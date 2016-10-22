@@ -2,15 +2,10 @@
   <!-- IMAGES -->
   <div class="carousel col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
     <div id="image" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#image" ng-repeat="image in $ctrl.images" data-slide-to="$index" class="{active:!$index}"></li>
-      </ol>
       <!-- Wrapper for slides -->
       <div class="carousel-inner" style="height:100% !important;"">
         <div class="item" ng-class="{active:!$index}" ng-repeat="image in $ctrl.images">
           <div class="img-container" ng-style="{'background-image':'url('+image+')'}">
-            
           </div>
           <div class="carousel-caption">
             <h3>{{ $ctrl.pointdog.userDescription }}</h3>
@@ -78,6 +73,12 @@
       </a>
       <a class="streetview" href="{{ $ctrl.mapUrls.streetview }}" title="">
         <img class="image img-responsive" src="/assets/img/street_view.png">
+      </a>
+      <a class="tomtom" href="{{ $ctrl.mapUrls.tomtom }}" title="">
+        <img class="image img-responsive" src="/assets/img/tomtom.png">
+      </a>
+      <a class="here" href="{{ $ctrl.mapUrls.here }}" title="">
+        <img class="image img-responsive" src="/assets/img/here.png">
       </a>
     </div>
   </div>
