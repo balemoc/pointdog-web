@@ -1,4 +1,28 @@
 detail
+  background-color #3c3c3c
+
+  .maps
+    background-color #3c3c3c
+    padding 0 5px 15px 5px
+    .image
+      display inline-block
+      width 54px
+      margin 5px 20px 5px 0px
+      
+    .tomtom
+      .image
+        width 62px
+    
+    .streetview
+      .image
+        width 70px    
+    .waze
+      .image
+        width 58px
+    .here
+      .image
+        width 62px
+        margin-right 0px // set last child
 
   /* Gallery block */
   .carousel
@@ -11,16 +35,22 @@ detail
 
   /* Info block */
   .info
-    min-height 200px
-    padding 25px 0px 25px 0px
+    padding 15px 0px 15px 0px
     margin-top: -1px; // due to left-floated contact div
     
     color gray
     background-color #3c3c3c
+    
+    .left-side, .right-side
+      padding 10px
+    
+    /* Tex */
+    .text--white
+      color #f2f1ef
 
     /* Avatar component */
     .info-avatar
-      margin 10px 0px 0px 0px;
+      //margin 10px 0px 0px 0px;
       
       /* Profile image */
       .image
@@ -35,35 +65,24 @@ detail
       
       font-size 16px
       
-      /* Tex */
-      .text--white
-        color #f2f1ef
+    /* Contact name */
+    .info-name
+      margin 0
+      padding 0
       
-      /* Contact name */
-      .name
-        margin 0
-        padding 0
-        
-      /* Contact url */
-      .url
-        display inline-flex
-        margin 0
-        padding 0
+    /* Contact url */
+    .info-url
+      display inline-flex
+      margin 0
+      padding 0
         
     .info-description
-      padding 0px 0px 0px 25px
+      padding 0
+      margin-top 25px
       
     .info-services
       padding 0px 0px 0px 25px
       margin-top 10px
   
       color gray
-      
-    .info-maps
-      padding 10px 0px 0px 25px
-
-      .image
-        display inline-block
-        margin 10px 10px 0px 0px
-        width 64px
   
