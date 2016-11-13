@@ -1,4 +1,7 @@
-<div ng-if="$ctrl.isAuthenticated">
+<div class="detail" ng-if="$ctrl.isAuthenticated">
+  <div class="indicator text-center col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+    <span class="text text-center">Please select app:</span>
+  </div>
   <div class="maps text-center col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
     <a class="google" href="{{ $ctrl.mapUrls.google }}" title="">
       <img class="image img-responsive" src="/assets/img/google_maps.png">
@@ -54,12 +57,14 @@
     <div class="right-side col-xs-8 col-sm-8 col-md-8 col-lg-8">
       <div class="info-name col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <span class="text text--white">
-          {{ $ctrl.user.emergencyContactName }}
+          {{ $ctrl.user.username }}
         </span>
       </div>
       <div class="info-url col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <span class="base">http://point.dog/</span>
-        <span class="username text--white">{{ $ctrl.user.username }}</span>
+        <span class="username text--white">
+          {{ $ctrl.user.username }}
+        </span>
       </div>
       <!-- DESCRIPTION -->
       <div class="info-description col-xs-8 col-sm-8 col-md-8 col-lg-8">
