@@ -14,7 +14,7 @@ const detailModule = angular.module('detail', [
 
   $stateProvider
     .state('detail', {
-      url: '/{username}/{pointdogName}',
+      url: '/me/{username}/{pointdogName}',
       component: 'detail',
       params: {
         // setup default pointdogname if null

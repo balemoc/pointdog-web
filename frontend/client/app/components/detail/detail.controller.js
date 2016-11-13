@@ -3,7 +3,7 @@ class DetailController {
     'ngInject';
 
     const username = $stateParams.username;
-    // get pointdogname from /{username}/{pointdogname} path
+    // get pointdogname from /me/{username}/{pointdogname} path
     // and if it was not specificed, set 'default'
     const pointdogName = $stateParams.pointdogName === '' ? 'default' : $stateParams.pointdogName;
 
@@ -57,6 +57,7 @@ class DetailController {
           lng,
         } = pointdog.location;
 
+        // round with lodash
         const latitude = window._.round(lat, 6);
         const longitude = window._.round(lng, 6);
 
@@ -130,16 +131,13 @@ class DetailController {
       .catch((error) => {
         switch (error.code) {
         case 0:
-          console.log('no user')
           $state.go('notfound');
           break;
         case 1:
-          console.log('no pointdog');
           $state.go('notfound');
           break;
         default:
           // unhandled
-          console.log(error)
           $state.go('index');
         }
       });
