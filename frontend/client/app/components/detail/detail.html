@@ -33,10 +33,10 @@
         </div>
       </div>
       <!-- Controls -->
-      <a class="left carousel-control" href="#image" role="button" data-slide="prev">
+      <a ng-if="$ctrl.images.length > 1" class="left carousel-control" href="#image" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
-      <a class="right carousel-control" href="#image" role="button" data-slide="next">
+      <a ng-if="$ctrl.images.length > 1" class="right carousel-control" href="#image" role="button" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right"></span>
       </a>
     </div>
