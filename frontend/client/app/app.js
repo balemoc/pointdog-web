@@ -28,7 +28,7 @@ angular.module('app', [
   // index router
   $urlRouterProvider.when('', '/');
   // set 404 router to default
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/404');
 
   const config = {
     apiKey: 'AIzaSyBDdWtz7vzIJCVs9zOxJAkPLUAy6UV2r2w',
