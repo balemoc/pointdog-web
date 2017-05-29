@@ -1,13 +1,17 @@
 {
-  "name": "Pointdog Web",
+  "name": "pointdog_frontend",
   "version": "0.5.0",
   "main": "dist/app.bundle.js",
   "dependencies": {
     "angular": "^1.5.0",
+    "angular-dropdowns": "^1.5.1",
     "angular-ui-router": "^1.0.0-beta.1",
     "angularfire": "^2.0.2",
+    "bootstrap-grid-ms": "^3.0.0",
     "ng-meta": "^1.0.0",
-    "normalize.css": "^3.0.3"
+    "ngmap": "^1.18.0",
+    "normalize.css": "^3.0.3",
+    "snazzy-info-window": "^1.0.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.0",
@@ -86,14 +90,6 @@
           ]
         }
       ],
-      "babel/generator-star-spacing": 1,
-      "babel/new-cap": 1,
-      "babel/array-bracket-spacing": 1,
-      "babel/object-curly-spacing": 1,
-      "babel/object-shorthand": 1,
-      "babel/arrow-parens": 1,
-      "babel/no-await-in-loop": 1,
-      "babel/flow-object-type": 1,
       "indent": [
         "error",
         2

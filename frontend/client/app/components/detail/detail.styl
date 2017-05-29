@@ -1,5 +1,320 @@
+@import '../../../../node_modules/snazzy-info-window/dist/snazzy-info-window.min.css';
+@import '../../../../node_modules/bootstrap-grid-ms/dist/bootstrap-grid-ms.min.css';
+
+/*
+  Lighbox
+*/
+
+.app-lightbox
+  display none
+  position absolute
+  top 0
+  left 0
+  z-index 1
+  width 100%
+  height 100%
+  background-color rgba(0,0,0, 0.5)
+  
+  .lightbox-image
+    display none
+    position fixed
+    top 50%
+    left 50%
+    width auto
+    height auto
+    transform translate(-50%,-50%)
+    
+    &.active
+      display block
+  
+  &.active
+    display block
+
+/*
+  Dropdown
+*/
+.app-dropdown
+  cursor pointer
+  z-index 1
+  position fixed
+  left 50%
+  bottom 50px
+  width 75%
+  transform translateX(-50%)
+  background-color #f9690e
+  color white
+  font-weight 100
+  letter-spacing 1.3px
+  padding 15px 20px 15px 20px
+  display flex
+  flex-direction row
+  justify-content center
+  align-items center
+  border-radius 5px
+  box-shadow 1px 1px 5px 0px rgba(0, 0, 0, 0.2)
+  
+  .dropdown-list
+    width 100%
+    color black
+    font-weight 300
+    position absolute
+    top 54px
+    border-radius 5px
+    margin 0 auto
+    background-color white
+    padding 0
+    display none
+    flex-direction column
+    align-items center
+    
+    @media screen and (max-width: 1200px)
+      top -165px
+      
+    @media screen and (min-width: 1200px)
+      top 55px
+    
+    &.expanded
+      display flex
+      left 0px
+    
+    .list-item
+      list-style none
+      padding 10px 20px 10px 20px
+      display block
+      width 100%
+      text-align center
+      
+      a
+        color black
+  /*
+    state
+    */    
+
+  .dropdown-state-0
+    display block
+    
+    &.hide
+      display none
+
+  .dropdown-state-1
+    display none 
+    
+    &.active
+      display block
+  
+  .dropdown-text
+    margin-right 5px
+    font-weight 500
+    
+
+  .dropdown-arrow
+    @media screen and (min-width: 401px)
+      max-width 30px
+      
+    @media screen and (max-width: 400px)
+      max-width 10%
+    
+  .dropdown-arrow__desktop
+    transform rotate(0deg)
+    margin-top 2px
+    
+    &.flip
+      transform rotate(180deg)
+      
+    
+  .dropdown-arrow__mobile
+    transform rotate(180deg)
+    
+    &.flip
+      transform rotate(0deg)
+
+  @media screen and (min-width: 1200px)
+    width 300px
+    padding 15px 40px 15px 40px
+    right 25px
+    top 25px
+    /* reset */
+    transform initial
+    left initial
+    bottom initial
+    
+  @media screen and (max-width: 768px)
+    width 80%
+/*
+  Selector
+*/
+
+.wrap-dd-select
+  z-index 1
+  position fixed
+  bottom 50px
+  left 0
+  right 0
+  margin-right auto
+  margin-left auto
+  margin 0 auto
+  background-color #f9690e
+  color white
+  font-weight 300
+  
+  .dropdown
+    bottom 100%
+    top initial
+    
+/*
+  Map
+*/
+
+.map-container
+  display block
+  min-height 100%
+  height 100%
+
+// full height/width map
+ng-map 
+  width 100% 
+  height 100% 
+  position absolute
+  
+/*
+  Infowindow
+*/
+.infowindow-container
+  background-color black
+  
+.pointdog-fullscreen
+  position absolute
+  bottom 0px
+  left 0px
+
+  
+.pointdog-image
+  max-width 100% !important
+  cursor pointer
+
+div.si-wrapper-top
+  @media screen and (max-width: 767px) and (min-width: 479px)
+    width 50%
+
+.si-content-wrapper
+  box-shadow 0px 0px 3px rgba(0, 0, 0, 0.5)
+  border-bottom 3px solid #FF9600
+
+.si-trapezoid-wrapper
+  display none
+  position relative
+  width 115%
+  top 10px
+  z-index 3
+  // background-color white
+  // border-bottom 80px solid red
+  // border-left 20px solid transparent
+  // border-right 20px solid transparent
+  // border-radius 8px
+  // height 30
+  // width 120%
+  .circle-wrapper
+    border-radius 50%
+    border 2px solid #ff9600
+    box-shadow 0px 0px 6px rgba(0, 0, 0, 0.4)
+    width 80px
+    display inline-block
+    overflow hidden
+    position relative
+    top 40px
+    height 80px
+    
+    @media screen and (max-width: 450px)
+      //max-width 60px
+      //max-height 60px
+
+  .pointdog-avatar-circle
+    max-width 100%
+    min-height 100%
+  
+  .pointdog-kennel-top
+    max-width 100%
+    
+  .pointdog-information
+    position absolute
+    width 100%
+    right 0
+    left 0
+    bottom 8px
+    margin auto
+    
+    @media screen and (max-width: 650px)
+      font-size 12px
+      
+    @media screen and (min-width: 430px) and (max-width: 478px)
+      bottom 15px
+      
+    @media screen and (min-width: 479px) and (max-width: 547px)
+      bottom 7px
+    
+    @media screen and (min-width: 580px) and (max-width: 1400px)
+      bottom 16px
+      
+    @media screen and (min-width: 1401px) and (max-width: 1600px)
+      bottom 25px
+    
+    @media screen and (min-width: 1601px)
+      bottom 30px
+
+    span
+      display block
+
+.si-content-html
+  display none
+  //max-width 350px
+  padding 5px
+  
+  .text-center
+    position relative
+  
+  .pointdog-logo
+    max-width 68px
+    
+  .pointdog-created
+    font-size 10px
+ 
+ .pointdog-info
+    font-size 12px
+
+.pointdog-description
+  font-size 11px
+  padding 10px
+  
+.pointdog-date
+  display inline-block
+  font-size 12px
+  width 60%
+  color rgba(0, 0, 0, 0.5)
+  
+.information
+  display inline-flex
+  flex-direction row
+  justify-content space-between
+  align-items center
+  width 100%  
+
+  .text
+    font-size 0.8em
+    color rgba(0, 0, 0, 0.5)
+/*
+  Custom marker
+*/
+.marker-container
+  display flex
+  flex-direction column
+  
+  .marker-point
+    margin 0 auto
+    width 15%
+
 .detail
   background-color #3c3c3c
+  padding 500px
 
   .indicator
     background-color #3c3c3c

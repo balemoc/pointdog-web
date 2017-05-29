@@ -1,78 +1,61 @@
-<div class="detail" ng-if="$ctrl.isAuthenticated">
-  <div class="indicator text-center col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-    <span class="text text-center">Please select app:</span>
+<ng-map center="{{ $ctrl.lat + 0.0025 }}, {{ $ctrl.lng }}" zoom="16" disable-default-u-i="{{ $ctrl.isMobile }}" default-style="false">
+  <custom-control id="home" position="LEFT_BOTTOM" index="1">
+    <!-- <img class="img-responsive" style="margin: 20px 0px 0px 8px;" src="/assets/imgs/pointdog_map_logo.png"> -->
+  </custom-control>
+  <custom-marker position="{{ $ctrl.lat }}, {{ $ctrl.lng }}" on-click="$ctrl.closeAndOpenInfoWindow()">
+    <div class="marker-container">
+      <img class="img-responsive" src="/assets/imgs/marker_icon.png">
+      <img class="marker-point img-responsive" src="/assets/imgs/marker_point.png">
+    </div>
+  </custom-marker>
+  <div class="si-trapezoid-wrapper text-center">
+    <div class="circle-wrapper">
+      <img class="pointdog-avatar-circle img-responsive" ng-src="{{ $ctrl.avatarUrl === '' && '/assets/img/avatar_default.png' || $ctrl.avatarUrl }}">
+    </div>
+    <img class="pointdog-kennel-top img-responsive" src="/assets/img/top-kennel.png">
+    <div class="pointdog-information">
+      <span class="information">{{ $ctrl.pointdog.name }}</span>
+      <span class="emergency">{{ $ctrl.user.username }}</span>
+    </div>
   </div>
-  <div class="maps text-center col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-    <a class="google" href="{{ $ctrl.mapUrls.google }}" title="">
-      <img class="image img-responsive" src="/assets/img/google_maps.png">
-    </a>
-    <a class="apple" href="{{ $ctrl.mapUrls.apple }}" title="">
-      <img class="image img-responsive" src="/assets/img/apple_maps.png">
-    </a>
-    <a class="waze" href="{{ $ctrl.mapUrls.waze }}" title="">
-      <img class="image img-responsive" src="/assets/img/waze.png">
-    </a>
-    <a class="streetview" href="{{ $ctrl.mapUrls.streetview }}" title="">
-      <img class="image img-responsive" src="/assets/img/street_view.png">
-    </a>
-    <a class="tomtom" href="{{ $ctrl.mapUrls.tomtom }}" title="">
-      <img class="image img-responsive" src="/assets/img/tomtom.png">
-    </a>
-    <a class="here" href="{{ $ctrl.mapUrls.here }}" title="">
-      <img class="image img-responsive" src="/assets/img/here.png">
-    </a>
-  </div>
-  <!-- IMAGES -->
-  <div class="carousel col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-    <div id="image" class="carousel slide" data-ride="carousel">
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner" style="height:100% !important;"">
-        <div class="item" ng-class="{active:!$index}" ng-repeat="image in $ctrl.images">
-          <div class="img-container" ng-style="{'background-image':'url('+image+')'}">
-          </div>
-          <div class="carousel-caption">
-            <h3>{{ $ctrl.pointdog.userDescription }}</h3>
-          </div>
-        </div>
-      </div>
-      <!-- Controls -->
-      <a ng-if="$ctrl.images.length > 1" class="left carousel-control" href="#image" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-      </a>
-      <a ng-if="$ctrl.images.length > 1" class="right carousel-control" href="#image" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
+  <div class="si-content-html">
+    <div class="text-center">
+      <img class="pointdog-fullscreen" src="/assets/img/fullscreen_marker.png">
+      <img ng-click="enlargePicture()" class="img-responsive pointdog-image" ng-src="{{ $ctrl.images[0] }}">
+    </div>
+    <div class="text-center pointdog-description col-lg-12">{{ $ctrl.pointdog.userDescription }}</div>
+    <div class="information">
+      <span class="left-side">
+        <span class="text">created at</span>
+        <span class="pointdog-created">{{ $ctrl.pointdog.timestamp * 1000 | date: 'HH:mm' }}</span>
+        <span class="text">on</span>
+        <span class="pointdog-created">{{ $ctrl.pointdog.timestamp * 1000 | date: 'dd/MM/yy' }}</span>
+      </span>
+      <a ng-href="{{ $ctrl.isMobile ? 'https://itunes.apple.com/hu/app/apple-store/id375380948?mt=8' : 'http://pointdog.com/' }}">
+        <img class="pointdog-logo img-responsive" src="/assets/imgs/pointdog_map_logo.png">
       </a>
     </div>
   </div>
-  <!-- CONTACT -->
-  <div class="info col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-    <!-- LEFT SIDE -->
-    <div class="left-side info-avatar text-center col-xs-4 col-sm-4 col-md-4 col-lg-4">
-      <!-- check for avatar -->
-      <img class="image img-circle" ng-if="$ctrl.avatarUrl" ng-src="{{ $ctrl.avatarUrl }}" alt="">
-      <!-- if not -->
-      <img class="image img-circle" ng-if="!$ctrl.avatarUrl" src="/assets/img/avatar_default.png" alt="">
-    </div>
-    <!-- RIGHT SIDE -->
-    <div class="right-side col-xs-8 col-sm-8 col-md-8 col-lg-8">
-      <div class="info-name col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <span class="text text--white">
-          {{ $ctrl.user.username }}
-        </span>
-      </div>
-      <div class="info-url col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <span class="base">http://point.dog/me/</span>
-        <span class="username text--white">
-          {{ $ctrl.user.username }}
-        </span>
-      </div>
-      <!-- DESCRIPTION -->
-      <div class="info-description col-xs-8 col-sm-8 col-md-8 col-lg-8">
-        <span class="text">
-          {{ $ctrl.pointdog.userDescription }}
-        </span>
-      </div>
-    </div>
-  </div>
+</ng-map>
+<div class="app-dropdown" ng-click="setDropdownState()">
+  <span class="dropdown-text dropdown-state-0">Open this Point.dog on</span>
+  <span class="dropdown-text dropdown-state-1">Close</span>
+  <img ng-class="$ctrl.isMobile ? 'dropdown-arrow dropdown-arrow__mobile' : 'dropdown-arrow dropdown-arrow__desktop'" src="/assets/imgs/app_dropdown_arrow.png">
+  <ul class="dropdown-list">
+    <li class="list-item">
+      <a href="list-maplink" ng-href="{{ $ctrl.mapUrls.google }}">Google Maps</a>
+    </li>
+    <li class="list-item">
+      <a href="list-maplink" ng-href="{{ $ctrl.mapUrls.apple }}">Apple Maps</a>
+    </li>
+    <li class="list-item">
+      <a href="list-maplink" ng-href="{{ $ctrl.mapUrls.waze }}">Waze</a>
+    </li>
+    <li class="list-item">
+      <a href="list-maplink" ng-href="{{ $ctrl.mapUrls.tomtom }}">TomTom Go</a>
+    </li>
+  </ul>
 </div>
-<div ng-if="!$ctrl.isAuthenticated" class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"><!--unauth--></div>
+<div class="app-lightbox" ng-click="hideOverlay()">
+  <img ng-click="enlargePicture()" class="img-responsive lightbox-image" ng-src="{{ $ctrl.images[0] }}">
+</div>

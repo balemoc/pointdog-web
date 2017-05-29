@@ -17,6 +17,7 @@ const PointdogFactory = ($firebaseObject) => {
                       .child('user-pointdogs-name')
                       .child(userId)
                       .child(pointdogName);
+
     // firebaseobj
     const pointdogObj = $firebaseObject(pointdog);
 
